@@ -8,10 +8,12 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 public class MyFirstTest extends Simulation {
 
+
     // 1 Http Configuration
     private HttpProtocolBuilder httpProtocol = http
             .baseUrl("https://videogamedb.uk/api")
             .acceptHeader("application/json");
+
 
     // 2 Scenario Definition
     private ScenarioBuilder scn = scenario("My First Test")

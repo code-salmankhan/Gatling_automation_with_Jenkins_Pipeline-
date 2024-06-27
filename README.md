@@ -1,2 +1,2 @@
-Gatling Java API Udemy Course Code
+Gatling Java API
 ============================================

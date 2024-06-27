@@ -18,42 +18,32 @@ public class RecordedSimulationProxy extends Simulation {
     .inferHtmlResources(AllowList(), DenyList(".*\\.js", ".*\\.css", ".*\\.gif", ".*\\.jpeg", ".*\\.jpg", ".*\\.ico", ".*\\.woff", ".*\\.woff2", ".*\\.(t|o)tf", ".*\\.png", ".*detectportal\\.firefox\\.com.*"))
     .acceptHeader("*/*")
     .acceptEncodingHeader("gzip, deflate")
-    .userAgentHeader("PostmanRuntime/7.29.2");
+    .userAgentHeader("PostmanRuntime/7.39.0");
   
-  private Map<CharSequence, String> headers_0 = Map.ofEntries(
-    Map.entry("Cache-Control", "no-cache"),
-    Map.entry("Postman-Token", "f87e2c8e-5525-4b03-b208-251efd07f622")
-  );
+  private Map<CharSequence, String> headers_0 = Map.of("Postman-Token", "faf039b1-adaa-4eac-8deb-8aef34431aee");
   
-  private Map<CharSequence, String> headers_1 = Map.ofEntries(
-    Map.entry("Cache-Control", "no-cache"),
-    Map.entry("Postman-Token", "f7ad0ff2-5a0c-44c8-9524-3c1d6c139541")
-  );
+  private Map<CharSequence, String> headers_1 = Map.of("Postman-Token", "5b0a6308-1577-4a23-8983-cc1298b74ee2");
   
   private Map<CharSequence, String> headers_2 = Map.ofEntries(
-    Map.entry("Cache-Control", "no-cache"),
     Map.entry("Content-Type", "application/json"),
-    Map.entry("Postman-Token", "c920e913-7703-4ad3-8d63-420b1abf4fdc")
+    Map.entry("Postman-Token", "7e33fc8e-e0a7-4361-bc28-6085c5ce7766")
   );
   
   private Map<CharSequence, String> headers_3 = Map.ofEntries(
-    Map.entry("Cache-Control", "no-cache"),
     Map.entry("Content-Type", "application/json"),
-    Map.entry("Postman-Token", "77168760-034c-4165-bd99-fe3ce6b576ab"),
-    Map.entry("authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY2MjcwNDUzNCwiZXhwIjoxNjYyNzA4MTM0fQ.TFQpEIrCziZonRCBCXmaS0200TBGvrclTAd30t8jaBI")
+    Map.entry("Postman-Token", "1a1dfdce-d193-4cf2-8bfe-e9af03a538ae"),
+    Map.entry("authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTcxOTI0NTU0MywiZXhwIjoxNzE5MjQ5MTQzfQ.86zfltMwK3G1IH9PjhceKVoxpQgwsxaVdB3kqnNow0w")
   );
   
   private Map<CharSequence, String> headers_4 = Map.ofEntries(
-    Map.entry("Cache-Control", "no-cache"),
     Map.entry("Content-Type", "application/json"),
-    Map.entry("Postman-Token", "0089c6b1-19af-4ed9-95b0-20a1ed5ad451"),
-    Map.entry("authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY2MjcwNDUzNCwiZXhwIjoxNjYyNzA4MTM0fQ.TFQpEIrCziZonRCBCXmaS0200TBGvrclTAd30t8jaBI")
+    Map.entry("Postman-Token", "50f78f73-e51b-424c-b7a6-676753ea2a76"),
+    Map.entry("authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTcxOTI0NTU0MywiZXhwIjoxNzE5MjQ5MTQzfQ.86zfltMwK3G1IH9PjhceKVoxpQgwsxaVdB3kqnNow0w")
   );
   
   private Map<CharSequence, String> headers_5 = Map.ofEntries(
-    Map.entry("Cache-Control", "no-cache"),
-    Map.entry("Postman-Token", "bf6786fd-b4f1-417f-a654-eb09371168a4"),
-    Map.entry("authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY2MjcwNDUzNCwiZXhwIjoxNjYyNzA4MTM0fQ.TFQpEIrCziZonRCBCXmaS0200TBGvrclTAd30t8jaBI")
+    Map.entry("Postman-Token", "c1d26281-a8c2-41b3-b230-20e0857d5ddb"),
+    Map.entry("authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTcxOTI0NTU0MywiZXhwIjoxNzE5MjQ5MTQzfQ.86zfltMwK3G1IH9PjhceKVoxpQgwsxaVdB3kqnNow0w")
   );
 
 
@@ -63,34 +53,34 @@ public class RecordedSimulationProxy extends Simulation {
         .get("/api/videogame")
         .headers(headers_0)
     )
-    .pause(14)
+    .pause(12)
     .exec(
       http("request_1")
         .get("/api/videogame/2")
         .headers(headers_1)
     )
-    .pause(6)
+    .pause(5)
     .exec(
       http("request_2")
         .post("/api/authenticate")
         .headers(headers_2)
         .body(RawFileBody("videogamedb/recordedsimulationproxy/0002_request.json"))
     )
-    .pause(11)
+    .pause(53)
     .exec(
       http("request_3")
         .post("/api/videogame")
         .headers(headers_3)
         .body(RawFileBody("videogamedb/recordedsimulationproxy/0003_request.json"))
     )
-    .pause(6)
+    .pause(15)
     .exec(
       http("request_4")
         .put("/api/videogame/3")
         .headers(headers_4)
         .body(RawFileBody("videogamedb/recordedsimulationproxy/0004_request.json"))
     )
-    .pause(4)
+    .pause(6)
     .exec(
       http("request_5")
         .delete("/api/videogame/2")
