@@ -13,14 +13,24 @@ public class VideoGameDbSimulation extends Simulation {
             .baseUrl("https://videogamedb.uk/api")
             .acceptHeader("application/json");
 
+    private static final int USER_COUNT = Integer.parseInt(System.getProperty("USERS", "5"));
+    private static final int RAMP_DURATION = Integer.parseInt(System.getProperty("RAMP_DURATION","10"));
+    private static final int TEST_DURATION = Integer.parseInt(System.getProperty("TEST_DURATION","20"));
+
+    @Override
+    public void before(){
+        System.out.printf("Running test with %d users %n", USER_COUNT);
+        System.out.printf("Ramping users over %d seconds %n", RAMP_DURATION);
+        System.out.printf("Running test duration %d users %n", TEST_DURATION);
+    }
 
     private static ChainBuilder getAllVideogames =
-                  exec(http("Get all video game")
-                          .get("/videogame"));
+            exec(http("Get all video game")
+                    .get("/videogame"));
 
     private static ChainBuilder getSpecificGame =
-                  exec(http("Get Specific game")
-                          .get("/videogame/2"));
+            exec(http("Get Specific game")
+                    .get("/videogame/2"));
 
 
 
@@ -29,19 +39,19 @@ public class VideoGameDbSimulation extends Simulation {
     private ScenarioBuilder scn = scenario("Video game db - Section code 7")
             //forever will keep your test running
             .forever().on(
-                          exec(getAllVideogames)
-                          .pause(5)
-                          .exec(getSpecificGame)
-                          .pause(5)
-                          .exec(getAllVideogames)
-             );
+                    exec(getAllVideogames)
+                            .pause(5)
+                            .exec(getSpecificGame)
+                            .pause(5)
+                            .exec(getAllVideogames)
+            );
 
 
     // 3 Load Simulation
     {
         setUp(
                 scn.injectOpen(
-                            nothingFor(5),
+                        nothingFor(5),
                             /* started 5 user in start
                               atOnceUsers(5),
                             */
@@ -62,11 +72,11 @@ public class VideoGameDbSimulation extends Simulation {
                             rampUsersPerSec(1).to(5).during(20).randomized()
                               */
 
-                            atOnceUsers(5),
-                            rampUsers(20).during(30)
-                              ).protocols(httpProtocol)
-        //maxDuration will break forever and stop it in 60 seconds
-        ).maxDuration(60);
+                        //atOnceUsers(5),
+                        rampUsers(USER_COUNT).during(RAMP_DURATION)
+                ).protocols(httpProtocol)
+                //maxDuration will break forever and stop it in 60 seconds
+        ).maxDuration(TEST_DURATION);
 
     }
 
